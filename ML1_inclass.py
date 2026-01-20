@@ -14,7 +14,7 @@ ML1 In-Class
 
 # %%
 # import packages
-from turtle import color
+# from turtle import color
 from pydataset import data
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -30,7 +30,10 @@ iris.head()
 
 # %%
 # What mental models can we see from these data sets?
+# There are 5 features in the iris dataset. 4 quantitative and 1 categorical.
 # What data science questions can we ask?
+# The species is the target variable, it's a categorical variable. We can use the 4 quantitative variables
+# to predict the species (target variable)
 
 # %%
 """
@@ -67,6 +70,9 @@ Patterns in data
 """
 # Look at the following tables: do you see any patterns? How could a
 # classification model point these out?
+# Just looking at the mean of the 3 species and how they differ between the 4 qualitative 
+# variables. You can see that 3 groups can be created based off these variables,
+# which will allow us to classify the species from the variables
 patterns = iris.groupby(['Species'])
 patterns['Sepal.Length'].describe()
 
@@ -94,9 +100,16 @@ Mild disclaimer
 # For now, ask yourself:
 
 # 1. What is the purpose of data splitting?
+# It allows us to separate our training data from our testing data to allow us to generalize to new data for predictions.
+# If we don't split our data, our model will overfit the training data and might not generalize to new data as well.
+
 # 2. What can we learn from data testing/validation?
+# We can learn how well our model will generalize to new data for predictions
 # 3. How do we know if a model is working?
+# If we get good accuracy scores that are similar among our training, validation, and testing data.
+# If our training score is much better than our validation/testing score, then our model is overfit.
 # 4. How could we find the model error?
+# You can look at the number of wrong predictions our model made versus the correct classification for each flower
 
 # If you want, try changing the size of the test data
 # or the number of n_neighbors and see what changes!
